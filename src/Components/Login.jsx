@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Register from './Register';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
-
-    const { signInUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { signInUser,signInWithGoogle } = useContext(AuthContext);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -14,11 +14,21 @@ const Login = () => {
 
         signInUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
+                e.target.reset();
+                navigate('/');
             })
             .catch(error => {
                 console.log("Error : ", error.message);
             })
+    }
+
+    const handleGoogleSignIn = () =>{
+        signInWithGoogle()
+        .then(result => {
+            navigate('/');
+        })
+        .catch(error => console.log('Error:',error.message));
     }
 
     return (
@@ -49,7 +59,10 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
+                        <div>
                         <p className='ml-8'>New to this Website? Please <Link className='text-blue-600' to="/register">Register</Link> </p>
+                        </div>
+                        <button onClick={handleGoogleSignIn} className="btn m-10  btn-outline btn-neutral">Sign in with Google</button>
                     </div>
                 </div>
             </div>

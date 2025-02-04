@@ -1,27 +1,39 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Register = () => {
-
-    const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { createUser, signInWithGoogle } = useContext(AuthContext);
 
     const handleRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-       
+
 
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
+                e.target.reset();
+                navigate('/');
             })
-            .catch(error =>{
+            .catch(error => {
                 console.log("Error : ", error.message);
             })
 
     }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                navigate('/');
+            })
+            .catch(error => console.log('Error:', error.message));
+    }
+
     return (
         <div>
             <div className="hero  bg-base-200 min-h-screen">
@@ -55,6 +67,7 @@ const Register = () => {
                             </div>
                         </form>
                         <p className='ml-8'>Already have an account? Please <Link className='text-blue-600' to="/login">Login</Link> </p>
+                        <button onClick={handleGoogleSignIn} className="btn m-10  btn-outline btn-neutral">Sign up with Google</button>
                     </div>
                 </div>
             </div>
