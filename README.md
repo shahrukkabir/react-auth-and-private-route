@@ -1,8 +1,20 @@
-# React + Vite
+# React Firebase Authentication 🔐
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple authentication system built with **React**, **Firebase**, and **React Router**. It includes user authentication (Sign Up, Login, Logout) and protected routes that only authenticated users can access.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- 🔑 **User Authentication** (Register/Login/Logout)
+- 🔥 **Firebase Authentication** (Email & Password)
+- 🔒 **Protected Routes** (Only accessible by logged-in users)
+- 🎨 **TailwindCSS** for styling
+- 🚀 **React Router** for navigation
+
+---
+
+## 🛠 Tech Stack
+- **React.js (Vite)**
+- **Firebase Authentication**
+- **React Router**
+- **TailwindCSS**
