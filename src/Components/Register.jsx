@@ -95,8 +95,8 @@ const Register = () => {
 
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col">
+        <div className="w-full min-h-screen bg-base-200 flex justify-center items-center px-4">
+            <div className="w-full mx-w-sm">
                 <div className="text-center lg:text-left">
                     <h1 className="text-3xl font-bold">Register now!</h1>
                 </div>
