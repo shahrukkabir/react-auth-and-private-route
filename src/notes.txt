@@ -1,0 +1,38 @@
+//     const handleSubmit = (e) => {
+//     e.preventDefault();
+//     const form = new FormData(e.targe
+//     const name = form.get("name");
+//     const photo = form.get("photo");
+//     const email = form.get("email");
+//     const password = form.get("password");
+//     const formData = { name, photo, email, password };   
+
+
+
+// Send verification email
+sendEmailVerification(user)
+    .then(() => {
+        console.log("Verification email sent");
+    })
+    .catch((error) => {
+        console.error("Verification email error:", error);
+        toast.error("Failed to send verification email.");
+        
+ 
+----------------------------Forget password------------------Start
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    if (!email) {
+      toast.error("Please Provide a valid email address");
+    } else {
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          toast.success("Password Reset email sent! Please check your email");
+          emailRef.current.value = "";
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    }
+  };
+----------------------------Forget password------------------END
