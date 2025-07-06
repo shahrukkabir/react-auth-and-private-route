@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
-import { sendPasswordResetEmail } from 'firebase/auth';
+import { GithubAuthProvider, sendPasswordResetEmail, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase.init';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -48,6 +48,18 @@ const Login = () => {
                 toast.error(error.message);
             });
     };
+
+    const provider = new GithubAuthProvider();
+
+    const handleGithubSignIn = () =>{
+        signInWithPopup(auth, provider)
+        .then(result =>{
+            toast.success('Successfully Logged in with Github!')
+        })
+        .catch(error => {
+            toast.error(error.message)
+        })
+    }
 
     const handleForgetPassword = () => {
         const email = emailRef.current.value;
@@ -126,12 +138,8 @@ const Login = () => {
                         </p>
                     </div>
 
-                    <button
-                        onClick={handleGoogleSignIn}
-                        className="btn m-6 btn-outline btn-neutral"
-                    >
-                        Sign in with Google
-                    </button>
+                    <button onClick={handleGoogleSignIn} className="btn m-6 btn-outline btn-neutral" > Sign in with Google </button>
+                    <button onClick={handleGithubSignIn} className="btn m-6 btn-outline btn-neutral" > Sign in with Github </button>
                 </div>
             </div>
         </div>
