@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
-import { updateProfile } from 'firebase/auth';
+import { sendEmailVerification, updateProfile } from 'firebase/auth';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
@@ -51,7 +51,7 @@ const Register = () => {
             .then((result) => {
                 toast.success("Successfully Registered!");
                 const user = result.user;
-                
+
                 updateProfile(user, {
                     displayName: name,
                     photoURL: photo,
