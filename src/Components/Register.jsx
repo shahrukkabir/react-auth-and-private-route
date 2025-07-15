@@ -98,7 +98,7 @@ const Register = () => {
         <div className="w-full min-h-screen bg-base-200 flex justify-center items-center px-4">
             <div className="w-full mx-w-sm">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-3xl font-bold">Register now!</h1>
+                    <h1 className="text-3xl mb-8 font-bold">Register now!</h1>
                 </div>
 
                 <div className="card bg-base-100 p-6 w-full max-w-sm shrink-0 shadow-2xl">
